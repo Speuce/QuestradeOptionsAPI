@@ -1,0 +1,5 @@
+.idea/
+cmake-build-debug/
+cmake-build-debug/CMakeFiles/CMakeOutput.log
+cmake-build-debug/CMakeFiles/clion-environment.txt
+cmake-build-debug/CMakeFiles/3.15.3/CMakeSystem.cmake
