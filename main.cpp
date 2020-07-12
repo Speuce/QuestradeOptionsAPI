@@ -29,6 +29,8 @@ int main() {
    cout << "Enter the questrade provided key: " << endl;
    cin >> in;
    access_key key(&in);
+   string hey = "hi";
    key.attemptRefresh();
+   key.printOut();
    while(true){}
 }

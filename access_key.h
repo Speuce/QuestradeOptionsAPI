@@ -4,16 +4,26 @@
 #pragma once
 
 #include <string>
-#include <cpprest/http_msg.h>
+#include <cpprest/details/basic_types.h>
+
+/**
+ * Forward declarations
+ */
+ namespace web{
+     namespace json{
+         class value;
+     }
+ }
+
+
 
 /**
  * Object for storing details of an access key
  */
-
 class access_key{
 
     private:
-        std::string* orgKey; //the original key provided.
+        std::string * orgKey; //the original key provided.
         std::string* accessKey; //the most recent access key provided
         std::string* refreshKey; //the refresh key provided.
         std::string* server; //the server url provided.
@@ -42,17 +52,22 @@ class access_key{
         /**
          * Get the key provided to the service.
          */
-        std::string getOrgKey();
+        std::string* getOrgKey();
 
         /**
          * @return the current provided access key, derived from the original/last key
          */
-        std::string getAccessKey();
+        std::string* getAccessKey();
 
         /**
          * @return the current provided refresh key, derived frm the original/last key.
          */
-        std::string getRefreshKey();
+        std::string* getRefreshKey();
+
+        /**
+         * @return the questrade endpoint where connections will be established.
+         */
+        std::string* getServerAddress();
 
         /**
          * Whether or no the current key is expired
@@ -62,6 +77,12 @@ class access_key{
 
         void attemptRefresh();
 
-        void accessReponse(web::http::http_response& response);
+        /**
+         * Prints out information about this access key
+         */
+        void printOut();
+
+public:
+    void readJson(web::json::value val);
 
 };
